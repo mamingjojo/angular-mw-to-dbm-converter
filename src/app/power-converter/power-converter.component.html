@@ -1,0 +1,32 @@
+<div class="flex">
+  <div class="container">
+    <label id="power-coverter-radio-group-label">Power converter</label>
+    <mat-radio-group
+      aria-labelledby="power-coverter-radio-group-label"
+      class="power-coverter-radio-group"
+      color="primary"
+      [(ngModel)]="powerToConvert"
+      (change)="selectPowerConverter($event)"
+    >
+    <mat-radio-button class="power-converter-radio-button"
+      *ngFor="let powerConversion of availablePowerConversion"
+      [(value)]="powerConversion">
+      {{powerConversion}}
+    </mat-radio-button>
+  </mat-radio-group>
+    <h1>{{powerConversion}}</h1>
+    <div></div>
+    <mat-form-field class="full-width">
+      <input type="number" matInput [(ngModel)]="inputPower" [placeholder]="inputPowerPlaceholder" [disabled]="isInputDisabled">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="convertPower()" [disabled]="isInputDisabled">Convert</button>
+    <div></div>
+  <h1>{{ convertedPower }}</h1>
+  </div>
+  <div class="container">
+    <h1>What is dBm?</h1>
+    <p>
+      dBm (sometimes dBmW or decibel-milliwatts) is unit of level used to indicate that a power ratio is expressed in decibels (dB) with reference to one milliwatt (mW). It is used in radio, microwave and fiber-optical communication networks as a convenient measure of absolute power because of its capability to express both very large and very small values in a short form compared to dBW, which is referenced to one watt (1000 mW).
+    </p>
+  </div>
+</div>
